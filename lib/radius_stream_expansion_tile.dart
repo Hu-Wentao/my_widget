@@ -14,7 +14,7 @@ class RadiusStreamExpansionTile extends StatefulWidget {
     this.trailing,
     this.initiallyExpanded = false,
     this.expansionStream,
-    this.manualControl = false,
+    this.manualControl = true,
   })  : assert(initiallyExpanded != null),
         super(key: key);
 
@@ -133,7 +133,7 @@ class _RadiusStreamExpansionTileState extends State<RadiusStreamExpansionTile>
             iconColor: _iconColor.value,
             textColor: _headerColor.value,
             child: ListTile(
-              onTap: _manualControl ? null : _handleTap,
+              onTap: _manualControl ? _handleTap : null,
               leading: widget.leading,
               title: widget.title,
               trailing: widget.trailing ??
