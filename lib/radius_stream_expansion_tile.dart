@@ -13,9 +13,10 @@ class RadiusStreamExpansionTile extends StatefulWidget {
     this.children = const <Widget>[],
     this.trailing,
     this.initiallyExpanded = false,
-    this.expansionStream,
+    @required this.expansionStream,
     this.manualControl = true,
   })  : assert(initiallyExpanded != null),
+        assert(manualControl != null),
         super(key: key);
 
   final Widget leading;
