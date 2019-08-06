@@ -2,10 +2,10 @@
 // Email: hu.wentao@outlook.com
 import 'package:flutter/material.dart';
 
-class radius_container extends StatelessWidget {
+class RadiusContainer extends StatelessWidget {
   final Widget child;
 
-  radius_container({
+  RadiusContainer({
     Key key,
     @required this.child,
   }) : super(key: key);
