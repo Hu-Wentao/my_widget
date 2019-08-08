@@ -7,8 +7,21 @@ class RadiusContainer extends StatelessWidget {
 
   RadiusContainer({
     Key key,
-    @required this.child,
+    this.child,
   }) : super(key: key);
+
+  RadiusContainer.col({Key key, List<Widget> children})
+      : this(
+            key: key,
+            child: Column(
+              children: children,
+            ));
+  RadiusContainer.row({Key key, List<Widget> children})
+      : this(
+            key: key,
+            child: Row(
+              children: children,
+            ));
 
   @override
   Widget build(BuildContext context) {
