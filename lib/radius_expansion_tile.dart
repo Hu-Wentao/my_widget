@@ -15,6 +15,7 @@ class RadiusExpansionTile extends StatefulWidget {
     this.children = const <Widget>[],
     this.trailing,
     this.initiallyExpanded = false,
+    this.manualControl = true,
   }) : assert(initiallyExpanded != null),
         super(key: key);
 
@@ -31,9 +32,10 @@ class RadiusExpansionTile extends StatefulWidget {
   final Widget trailing;
 
   final bool initiallyExpanded;
+  final bool manualControl;
 
   @override
-  _RadiusExpansionTileState createState() => _RadiusExpansionTileState();
+  _RadiusExpansionTileState createState() => _RadiusExpansionTileState(manualControl);
 }
 
 class _RadiusExpansionTileState extends State<RadiusExpansionTile> with SingleTickerProviderStateMixin {
@@ -54,6 +56,10 @@ class _RadiusExpansionTileState extends State<RadiusExpansionTile> with SingleTi
   Animation<Color> _backgroundColor;
 
   bool _isExpanded = false;
+
+  bool _manualControl;
+
+  _RadiusExpansionTileState( this._manualControl);
 
   @override
   void initState() {
@@ -76,7 +82,10 @@ class _RadiusExpansionTileState extends State<RadiusExpansionTile> with SingleTi
     super.dispose();
   }
 
-  void _handleTap() {
+  void _handleTap([bool expandCmd]) {
+    if (expandCmd != null && expandCmd == _isExpanded) {
+      return;
+    }
     setState(() {
       _isExpanded = !_isExpanded;
       if (_isExpanded) {
@@ -116,7 +125,7 @@ class _RadiusExpansionTileState extends State<RadiusExpansionTile> with SingleTi
             iconColor: _iconColor.value,
             textColor: _headerColor.value,
             child: ListTile(
-              onTap: _handleTap,
+              onTap: _manualControl ? _handleTap : null,
               leading: widget.leading,
               title: widget.title,
               trailing: widget.trailing ?? RotationTransition(
