@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_widget/radius_expansion_tile.dart';
+import 'package:my_widget/widgets/radius_expansion_tile.dart';
 
 void main() => runApp(MyApp());
 

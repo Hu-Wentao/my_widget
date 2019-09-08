@@ -22,7 +22,7 @@ class TextDivider extends StatelessWidget {
     Text titleText = Text(
       this.title,
       textAlign: TextAlign.start,
-      style: TextStyle(color: this.textColor??Theme.of(context).primaryColor),
+      style: TextStyle(color: this.textColor ?? Theme.of(context).primaryColor),
     );
     return Padding(
       padding:

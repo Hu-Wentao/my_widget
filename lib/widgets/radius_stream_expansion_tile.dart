@@ -1,5 +1,10 @@
+// Copyright 2019, Hu Wentao. All rights reserved.
+// Use of this source code is governed by the MIT license
+// Email: hu.wentao@outlook.com
+// Date : 2019/8/6
+// Time : 19:29
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 const Duration _kExpand = Duration(milliseconds: 200);
 
@@ -13,7 +18,7 @@ class RadiusStreamExpansionTile extends StatefulWidget {
     this.children = const <Widget>[],
     this.trailing,
     this.initiallyExpanded = false,
-    @required this.expansionStream,
+    this.expansionStream,
     this.manualControl = true,
   })  : assert(initiallyExpanded != null),
         assert(manualControl != null),
@@ -35,7 +40,6 @@ class RadiusStreamExpansionTile extends StatefulWidget {
 
   final Stream<bool> expansionStream;
   final bool manualControl;
-
   @override
   _RadiusStreamExpansionTileState createState() =>
       _RadiusStreamExpansionTileState(expansionStream, manualControl);
@@ -44,11 +48,11 @@ class RadiusStreamExpansionTile extends StatefulWidget {
 class _RadiusStreamExpansionTileState extends State<RadiusStreamExpansionTile>
     with SingleTickerProviderStateMixin {
   static final Animatable<double> _easeOutTween =
-      CurveTween(curve: Curves.easeOut);
+  CurveTween(curve: Curves.easeOut);
   static final Animatable<double> _easeInTween =
-      CurveTween(curve: Curves.easeIn);
+  CurveTween(curve: Curves.easeIn);
   static final Animatable<double> _halfTween =
-      Tween<double>(begin: 0.0, end: 0.5);
+  Tween<double>(begin: 0.0, end: 0.5);
 
   final ColorTween _borderColorTween = ColorTween();
   final ColorTween _headerColorTween = ColorTween();
